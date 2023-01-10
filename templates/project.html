@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	
+	<title>{{user.full_name}}</title>
+	<link rel="icon" href="/static/images/Portfolio_-.png" type="image/png" sizes="16x16">  
+    <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename ='css/main.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/strip.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/color.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/responsive.css')}}">
+
+</head>
+<body style="background-image: url(/static/images/bg2.jpg);background-repeat: calc(3);">
+	<div class="theme-layout">
+	
+		<div class="responsive-header">
+			<div class="mh-head first Sticky">
+				
+				
+				<span class="mh-btns-right" style="margin-top: 20px;">
+					<a class="fa fa-comments" href="#shoppingbag" style="font-size: 30px;color: grey;" title="Contact Me"></a>
+				</span>
+			</div>
+			
+			
+			<nav id="shoppingbag">
+				<div>
+					<div class="contact-form">
+						<form action="/{{user.u_name}}/sendmail/"  method="post">
+							<div class="form-group">	
+							  <input type="text" id="input" required="required"/>
+							  <label class="control-label" for="input">First & Last Name</label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="text" required="required"/>
+							  <label class="control-label" for="input"><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c287afa3abae82">[email&#160;protected]</a></label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="text" required="required"/>
+							  <label class="control-label" for="input">Subject</label><i class="mtrl-select"></i>
+							</div>
+							
+							<div class="form-group">	
+							  <textarea rows="4" id="textarea" required="required"></textarea>
+							  <label class="control-label" for="textarea">Message</label><i class="mtrl-select"></i>
+							</div>
+							<div class="submit-btns">
+								<button class="mtr-btn " type="button"><i>Submit</i></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</div><!-- responsive header -->
+	
+	
+		<div class="topbar transparent">
+			
+			<div class="menu-container" id="toggle">
+			  <a href="#" class="canvas-menu" >
+				<i class="fa fa-times fa-comments" aria-hidden="true"></i></a>
+			</div>
+			<div class="overlay" id="overlay">
+				<div class="overlay-menu">
+					<div class="offcanvas-menu">
+					<h1 style="margin-left: 50px;">Contact Me</h1>
+					<div class="contact-form">
+						<form action="/{{user.u_name}}/sendmail/"  method="post">
+							<div class="form-group">	
+							  <input type="text" id="input" required="required"/>
+							  <label class="control-label" for="input">First & Last Name</label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="text" required="required"/>
+							  <label class="control-label" for="input"><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c287afa3abae82">[email&#160;protected]</a></label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="text" required="required"/>
+							  <label class="control-label" for="input">Subject</label><i class="mtrl-select"></i>
+							</div>
+							
+							<div class="form-group">	
+							  <textarea rows="4" id="textarea" required="required"></textarea>
+							  <label class="control-label" for="textarea">Message</label><i class="mtrl-select"></i>
+							</div>
+							<div class="submit-btns">
+								<button class="mtr-btn signup" type="button"><i>Submit</i></button>
+							</div>
+						</form>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div><!-- topbar transparent header -->
+		
+	
+	
+	<!-- top area animated -->
+	
+	<section>
+		<div class="gap ext-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="offset-lg-1 col-lg-10">
+						<span class="pro_logo"><img src="/static/images/{{project.logo}}" alt=""></span>
+
+						<div class="detail-page">
+							<div class="detail-meta">
+								<h2>{{project.name}}</h2>
+								<div class="post-time" style="font-size: 15px;">
+									<div class="author-thumb">
+									<span><a href="/{{user.u_name}}" title="">by {{user.full_name}}</a></span>
+									</div>
+									<span class="post-date">
+										<i class="fa fa-calendar"></i>
+										<a title="" href="#">{{project.started_at}} {%if project.ended_at!=None %}To {{project.ended_at}}{%endif%}</a>
+									</span> 
+								</div>
+								
+								<ul>
+									{% for i in description %}
+									<li>{{i}}</li>
+									{% endfor %}
+								</ul>
+								<h3></h3>
+								<img src="/static/images/{{project.screenshots}}">
+								<div class="pro_button">
+								<a href="/{{user.u_name}}"><button class="mtr-btn signin" type="button"><span>Back</span></button></a>
+								<a href="{{project.url}}"><button class="mtr-btn signin" type="button"><span>Demo</span></button></a>
+								</div>
+								
+								<!-- comments sec -->
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- footer top -->
+	<footer style="padding: 10px">
+		<div class="foot">
+			<a href="/"><img src="/static/images/Portfolio_-.png"></a>
+			<h6>Portfolio Web</h6>
+		</div>
+		<div class="foot_name">
+			<h4>&#169;sanpreet_kaur</h4>
+		</div>
+	</footer>
+<!-- footer -->
+</div>
+	<!-- side panel -->		
+	
+	<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.min.js"></script>
+    <script src="{{ url_for('static', filename ='js/main.min.js')}}"></script>
+	<script src="{{ url_for('static', filename ='js/strip.pkgd.min.js')}}"></script>
+	<script src="{{ url_for('static', filename ='js/script.js')}}"></script>
+</body>	
+
+</html>

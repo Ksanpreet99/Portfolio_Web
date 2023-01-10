@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	<title>Portfolio Web</title>
+    <link rel="icon" href="/static/images/Portfolio_-.png" type="image/png" sizes="16x16"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/main.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/color.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/responsive.css')}}">
+    <style>
+        @keyframes bgcolor {
+    10% {
+        background-color: #4e4f504d
+    }
+
+    15% {
+        background-color: #45a2e583
+    }
+
+    30% {
+        background-color: #8be2606e
+    }
+
+    60% {
+        background-color: #ee88446c
+    }
+
+    90% {
+        background-color: rgba(231, 111, 131, 0.425)
+    }
+
+    100% {
+        background-color: #864cbf62
+    }
+}
+body,.count,#count {
+    -webkit-animation: bgcolor 20s infinite;
+    animation: bgcolor 10s infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+
+</style>
+</head>
+<body>
+<!--<div class="se-pre-con"></div>-->
+<div class="theme-layout">
+	<div class="container-fluid pdng0">
+		<div class="row merged">
+            <div class="col-lg-6" style="background-color: white">
+                <div class="main">
+                    <h1><span class="count" >Portfolio Web</span></h1>
+                </div>
+                <div class="main">
+                    <img src="/static/images/Portfolio_.gif">
+                <h2><span class="count" id="count">{{user}} Users on Portfolio Web</span></h2>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="main">
+                    <h3>Portfolio web is a unique way to showcase your work and let others know about yourself. It’s like an platform for your projects, case studies, and information about you. 
+                        In addition, it’s one of the best ways to express your personality, experience and capabilities.
+                    </h3>
+                    <h6>Please check <span>My Portfolio.</span> &#128073;   <a href="/sanpreet_kaur"><span><img src="/static/images/Portfolio_-.png"></span></a></h6>
+                    <h6> Feel Free to contact if you want to showcase your resume online</h6>
+                </div>
+                <div class="contact-form bgcolor">
+                    <form action="" method="post">
+                        <div><h4>Contact Me</h4></div>
+                        <div class="form-group">	
+                          <input type="text" id="input" name="name" required="required" />
+                          <label class="control-label" for="input">Name</label><i class="mtrl-select"></i>
+                        </div>
+                        <div class="form-group">	
+                          <input type="text" name="email"  required="required" />
+                          <label class="control-label" for="input"><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c287afa3abae82">[email&#160;protected]</a></label><i class="mtrl-select"></i>
+                        </div>
+                        <div class="form-group">	
+                          <input type="text" name="subject" required="required" />
+                          <label class="control-label" for="input">Subject</label><i class="mtrl-select"></i>
+                        </div>
+                        
+                        <div class="form-group">	
+                          <textarea rows="2" id="textarea" name="message" required="required" ></textarea>
+                          <label class="control-label" for="textarea">Message</label><i class="mtrl-select"></i>
+                        </div>
+                        <div class="submit-btns">
+                            <button class="mtr-btn" type="submit"><i>Submit</i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+	
+	<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.min.js"></script>
+	<script src="{{ url_for('static', filename ='js/script.js')}}"></script>
+    <script>
+        if ( window.history.replaceState ) {
+          window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+    <script>
+        function animateValue(id){
+        var obj = document.getElementById(id);
+        var current = parseInt(obj.innerHTML);
+        var upto = -1
+        setInterval(function(){
+            if(upto<current){
+            upto++;
+            obj.innerHTML = upto +" Users on Portfolio Web";
+            }
+        },1000);
+    }
+
+    animateValue('count');
+    </script>
+</body>	
+
+</html>

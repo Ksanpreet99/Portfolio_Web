@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	
+	
+	<title>{{user.full_name}}</title>
+    <link rel="icon" href="/static/images/Portfolio_-.png" type="image/png" sizes="16x16"> 
+    <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename ='css/main.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/strip.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/color.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/responsive.css')}}">
+
+</head>
+<body>
+	<div class="theme-layout">
+	
+		<div class="responsive-header">
+			<div class="mh-head first Sticky">
+				
+				
+				<span class="mh-btns-right" style="margin-top: 20px;">
+					<a class="fa fa-comments" href="#shoppingbag" style="font-size: 30px;color: grey;" title="Contact Me"></a>
+				</span>
+			</div>
+			
+			
+			<nav id="shoppingbag"  style="background-color: rgb(100, 99, 99);">
+				<div>
+					<div class="contact-form">
+						<form action="/{{user.u_name}}/sendmail/"  method="post">
+							<div class="form-group">	
+							  <input type="text" id="input" required="required" name="name"/>
+							  <label class="control-label" for="input">First & Last Name</label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="text" required="required" name="email"/>
+							  <label class="control-label" for="input"><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c287afa3abae82">[email&#160;protected]</a></label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="text" required="required" name="subject"/>
+							  <label class="control-label" for="input">Subject</label><i class="mtrl-select"></i>
+							</div>
+							
+							<div class="form-group">	
+							  <textarea rows="4" id="textarea" required="required" name="message"></textarea>
+							  <label class="control-label" for="textarea">Message</label><i class="mtrl-select"></i>
+							</div>
+							<div class="submit-btns">
+								<button class="mtr-btn " type="submit"><i>Submit</i></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</div><!-- responsive header -->
+		
+		<div class="topbar transparent">
+			
+			<div class="menu-container" id="toggle">
+			  <a href="#" class="canvas-menu" >
+				<i class="fa fa-times fa-comments" aria-hidden="true"></i></a>
+			</div>
+			<div class="overlay" id="overlay">
+				<div class="overlay-menu">
+					<div class="offcanvas-menu">
+					<h1 style="margin-left: 50px;">Contact Me</h1>
+					<div class="contact-form">
+						<form action="/{{user.u_name}}/sendmail/" method="post">
+							<div class="form-group">	
+							  <input type="text" id="input" name="name" required="required" />
+							  <label class="control-label" for="input">First & Last Name</label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="text" name="email"  required="required" />
+							  <label class="control-label" for="input"><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c287afa3abae82">[email&#160;protected]</a></label><i class="mtrl-select"></i>
+							</div>
+							<div class="form-group">	
+							  <input type="text" name="subject" required="required" />
+							  <label class="control-label" for="input">Subject</label><i class="mtrl-select"></i>
+							</div>
+							
+							<div class="form-group">	
+							  <textarea rows="4" id="textarea" name="message" required="required" ></textarea>
+							  <label class="control-label" for="textarea">Message</label><i class="mtrl-select"></i>
+							</div>
+							<div class="submit-btns">
+								<button class="mtr-btn" type="submit"><i>Submit</i></button>
+							</div>
+						</form>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	<section>
+		
+			<div class="container-fluid">
+				<div class="row no-gutters">
+					<div class="col-lg-12">
+						<div class="ext-gap high-opacity">
+							<div class="content-bg-wrap" style="background: url(static/images/{{user.cover_photo}})"></div>
+								<div class="top-banner">
+									
+									
+									<h1>{{user.full_name}}</h1>
+									
+									<nav class="breadcrumb">
+									<span class="breadcrumb-item active">Portfolio</span>
+									</nav>
+								</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-sm-3">
+						<div class="user-avatar">
+							<figure>
+								<img src="static/images/{{user.photo}}" alt="">
+							</figure>
+							
+							
+						</div>
+					</div>
+					<div class="col-lg-8 col-sm-3">
+						<div class="timeline-info">
+						<ul>
+						{% for s in social %}
+							{% if s.is_public %}
+								{% if s.name=='gmail'%}
+								<li><a href="mailto:{{s.url}}"><iconify-icon icon="simple-icons:{{s.name}}"></iconify-icon></a></li>
+								{% else %}	
+								<li><a href="{{s.url}}" ><iconify-icon icon="simple-icons:{{s.name}}"></iconify-icon></a></li>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+						</ul>
+					</div>
+					</div>
+				</div>
+			</div>
+	</section><!-- top area animated -->
+	
+	<section>
+		<div class="gap">
+			<div class="container">
+				<div class="row" id="page-contents">
+					<div class="col-lg-12">
+						<div id="options" class="isotop-full">
+							<div class="option-isotop">
+							  <ul id="filter2" class="option-set icon-style" data-option-key="filter">
+								 <li><a href="#about" data-option-value=".about" class="selected" data-toggle="tooltip" data-placement="top" title="About">About</a></li>
+								 <li><a href="#educations" data-option-value=".educations" data-toggle="tooltip" data-placement="top" title="Education">Education</a></li>
+								 <li><a href="#job" data-option-value=".job" data-toggle="tooltip" data-placement="top" title="Job">Internships</a></li>
+								 <li><a href="#skills" data-option-value=".skills" data-toggle="tooltip" data-placement="top" title="Skills">Skills</a></li>
+								 <li><a href="#project" data-option-value=".project" data-toggle="tooltip" data-placement="top" title="Project">Projects</a></li>
+								 <li><a href="#certification" data-option-value=".certification" data-toggle="tooltip" data-placement="top" title="Certification">Certification</a></li>
+							  </ul>
+							</div>
+						</div><!-- FILTER BUTTONS -->
+					</div>
+					<div class="col-lg-12">	
+						<div class="row masonry">
+							<div class="about col-lg-12">
+								<div class="box">
+									<h4>{{user.about}}</h4>
+									
+								</div>
+							</div>
+						</div>
+						<div class="row masonry">
+							<div class="head col-lg-12">
+								<h4>Education<iconify-icon icon="map:university"></iconify-icon></h4>
+							</div>
+						</div>
+						<div class="row masonry">
+							{% for e in education%}
+							<div class="educations col-lg-6">
+								<div class="portfolio-box" style="height: 110px;">
+									<h4>{{e.degree_name}}</h4>
+									<div class="overlinks">
+										<h6 style="margin-top: 15px;">{{e.degree_name}}</h6>
+										<h6>{{e.score}},{{e.year}}</h6>
+										<ul class="cate">
+											<li>{{e.university_name}},</li>
+											<li>{{e.city}},</li>
+											<li>{{e.state}}</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							{%endfor%}
+						</div>
+						<div class="row masonry">
+							<div class="head col-lg-12">
+								<h4>Internships<iconify-icon icon="ic:baseline-work"></iconify-icon></h4>
+							</div>
+						</div>
+						<div class="row masonry">
+							{% for j in job%}
+							<div class="job col-lg-6">
+								<div class="portfolio-box" style="height: 110px;">
+									<h4>{{j.role}}</h4>
+									<div class="overlinks">
+										<h6  style="margin-top: 15px;">{{j.role}}</h6>
+										<h6>{{j.started_at}} To {{j.ended_at}}</h6>
+										<ul class="cate">
+											<li>{{j.company}},</li>
+											<li>{{j.city}},</li>
+											<li>{{j.state}}</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div class="row masonry">
+							<div class="head col-lg-12">
+								<h4>Skills<iconify-icon icon="fluent:person-star-16-filled"></iconify-icon></h4>
+							</div>								
+						</div>
+						<div class="row masonry">
+							{%for sc in skill_category%}
+							<div class="skills col-lg-6">
+								<div class="portfolio-box" style="height: 150px;">
+									<h4 style="margin-top: 35px;">{{sc.name}}</h4>
+									<div class="overlinks">
+										<h6>{{sc.name}}</h6>
+										<ul class="cate2"  style="margin-left: -10%;">
+										{% for s in skills %}
+											{% if sc.id==s.category_id%}
+												<li>
+													{% if s.icon_small=='c++' %}
+													<iconify-icon icon="bxl:c-plus-plus"></iconify-icon>
+													{% elif s.icon_small=='matplotlib' %}
+													<iconify-icon icon="logos:matplotlib-icon"></iconify-icon>
+													{% else %}
+													<iconify-icon icon="simple-icons:{{s.icon_small}}"></iconify-icon>
+													{% endif %}
+													{{s.name}}
+												<span class="pro">
+												{% for i in range(s.proficiency) %}
+												<i class="fa fa-circle"></i>
+												{% endfor %}
+												{% for i in range(10-s.proficiency) %}
+												<i class="fa fa-circle-o"></i>
+												{% endfor %}
+											{% endif %}
+										{% endfor %}
+												</span>
+												</li>		
+										</ul>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div class="row masonry">
+							<div class="head col-lg-12">
+								<h4>Projects<iconify-icon icon="fluent:clipboard-task-list-ltr-24-filled"></iconify-icon></h4>	
+							</div>
+						</div>
+						<div class="row masonry">
+							{% for p in project %}
+							<div class="project col-lg-6">
+								<div class="portfolio-box" style="height: 100px;">
+									<h4>{{ p.name }}</h4>
+									<div class="overlinks" style="margin-left: -5%;">
+										<!-- <img src="{{p.url}}"> -->
+										<ul class="cate2">
+											<a href="{{ p.url }}" title=""><img src="/static/images/{{p.logo}}" alt=""></a>
+											<li>{{p.name}}</li>
+											<li><a href="{{user.u_name}}/project/{{p.name}}">More...</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div class="row masonry">
+							<div class="head col-lg-12">
+								<h4>Certifications<iconify-icon icon="healthicons:i-certificate-paper"></iconify-icon></h4>
+							</div>
+						</div>
+						<div class="row masonry">
+							{% for c in certification %}
+							<div class="certification col-lg-6">
+								<div class="portfolio-box"  style="height: 100px;">
+									<h4>{{ c.name }}</h4>
+									<div class="overlinks">
+										<h6>{{ c.name }},{{ c.organization}}</h6>
+										<ul class="cate">
+											<li></li>
+											<li><a href="{{c.url}}">View</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<a href="static/files/{{user.resume}}"><button class="mtr-btn signin" type="button"><span>Resume  <i class="fa fa-file-pdf-o"></i></span></button>
+						</a>
+					</div>	
+				</div>
+			</div>	
+		</div>
+	</section>
+<footer style="padding: 10px">
+	<div class="foot">
+		<a href="/"><img src="/static/images/Portfolio_-.png"></a>
+		<h6>Portfolio Web</h6>
+	</div>
+	<div class="foot_name">
+		<h4>&#169;sanpreet_kaur</h4>
+	</div>
+</footer>
+	<!-- footer -->
+	
+</div>
+	<!-- side panel -->		
+	
+	<script src="{{ url_for('static', filename ='js/main.min.js')}}"></script>
+	<script src="{{ url_for('static', filename ='js/strip.pkgd.min.js')}}"></script>
+	<script src="{{ url_for('static', filename ='js/script.js')}}"></script>
+
+</body>	
+
+
+</html>
