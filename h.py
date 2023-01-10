@@ -8,7 +8,7 @@ from flask_admin.contrib.sqla import ModelView
 from email.message import EmailMessage
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '123456790'
+app.config['SECRET_KEY'] = ''
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolio.sqlite3'
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
@@ -195,7 +195,7 @@ class Skills(db.Model):
 
 
 
-admin = Admin(app, name='Dashboard', template_mode='bootstrap3',url='/admin/Edit')
+admin = Admin(app, name='Dashboard', template_mode='bootstrap3',url='/admin')
 
 admin.add_view( ModelView(User, db.session, name='User') )
 admin.add_view( ModelView(Education, db.session, name='Education') )
@@ -216,24 +216,24 @@ def welcome():
       subject = request.form['subject']
       message = request.form['message']
       your_name = 'Portfolio Web'
-      your_email = 'portfolioweb.pw@gmail.com'
-      your_password = 'xybmohlqfxwsrvjo'
+      your_email = #'portfolio_web_email_id'
+      your_password = #'*************'
       server = smtplib.SMTP('smtp.gmail.com',587)
       server.ehlo()
       server.starttls()
       server.login(your_email,your_password)
-      sender_email = 'portfolioweb.pw@gmail.com'
-      receiver_email = 'ksanpreet99@gmail.com'
+      sender_email = #'portfolio_web_email_id'
+      receiver_email = #'your_email_id'
       msg = EmailMessage()
       msg.set_content('\nDear Sanpreet Kaur,\n\nSomeone trying to contact you.\n\n'+'Name: '+str(name)+'\nEmail: '+str(email)+'\nMessage: '+str(message)+'\n\nRegards,\nPortfolio Web')
       msg['Subject'] = subject
-      msg['From'] = sender_email
-      msg['To'] = receiver_email
+      msg['From'] = sender_email  #portfolio_web_email_id
+      msg['To'] = receiver_email  #your_email_id
       msg2 = EmailMessage()
       msg2.set_content('\nDear '+str(name)+',\n\nYour Message was sent Successfully.\n\nYour Message: '+str(message)+'\n\nRegards,\nPortfolio Web')
       msg2['Subject'] = 'Your Message was sent Successfully.'
-      msg2['From'] = sender_email
-      msg2['To'] = email
+      msg2['From'] = sender_email  #portfolio_web_email_id
+      msg2['To'] = email #message_sender's_email_id
       try:
          server.send_message(msg)
          server.send_message(msg2)
@@ -245,8 +245,8 @@ def welcome():
       return render_template('main.html',user = user)
    return render_template('main.html',user = user)
 
-@app.route('/sanpreet_kaur/Edit', methods=['GET', 'POST'])
-def Edit():
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
    error = None
    if request.method == 'POST':
         u_name = request.form['u_name']
@@ -254,7 +254,7 @@ def Edit():
         password = request.form['password']
         user = User.query.filter_by(u_name=u_name,email=email,password=password).first()
         if user:
-         return redirect('/admin/Edit/')
+         return redirect('/admin')
         else:
          error = 'Invalid Credentials'
    return render_template('login.html',error=error)
@@ -286,24 +286,24 @@ def sendmail(u_name):
       subject = request.form['subject']
       message = request.form['message']
       your_name = 'Portfolio Web'
-      your_email = 'portfolioweb.pw@gmail.com'
-      your_password = 'xybmohlqfxwsrvjo'
+      your_email = #'portfolio_web_email_id'
+      your_password = #'*************'
       server = smtplib.SMTP('smtp.gmail.com',587)
       server.ehlo()
       server.starttls()
       server.login(your_email,your_password)
-      sender_email = 'portfolioweb.pw@gmail.com'
-      receiver_email = user.email
+      sender_email = #'portfolio_web_email_id'
+      receiver_email = user.email #user_email_id or your_email_id
       msg = EmailMessage()
       msg.set_content('\nDear '+user.full_name+',\n\nSomeone is trying to contact you through Portfolio Web.\n\n'+'Name: '+str(name)+'\nEmail: '+str(email)+'\nMessage: '+str(message)+'\n\nRegards,\nPortfolio Web')
       msg['Subject'] = 'You have a Message - '+subject
-      msg['From'] = sender_email
+      msg['From'] = sender_email  #'portfolio_web_email_id'
       msg['To'] = receiver_email
       msg2 = EmailMessage()
       msg2.set_content('\nDear '+str(name)+',\n\nYour Message was sent Successfully.\n\nYour Message: '+str(message)+'\n\nRegards,\nPortfolio Web')
       msg2['Subject'] = 'Your Message was sent Successfully.'
-      msg2['From'] = sender_email
-      msg2['To'] = email
+      msg2['From'] = sender_email  #'portfolio_web_email_id'
+      msg2['To'] = email  #message_sender's_email_id
       try:
          server.send_message(msg)
          server.send_message(msg2)
